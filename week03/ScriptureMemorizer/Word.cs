@@ -4,16 +4,17 @@ using System.Globalization;
 public class Word()
 {
     public string _text;
-    private bool _isHidden = new bool();
+    public int _numThis;
+    public bool _isHidden;
     public Random _random = new Random();
 
-    public string Word1(string text)  //why are we doing nothing to the text just injesting and vommitting the same thing.
+    public void Word1(string text)  //why are we doing nothing to the text just injesting and vommitting the same thing.
     {
         _text = text;
-        return _text;
     }
-    public void Hide()
+    public void Hide(string wordRandom, int randWordIndex)
     {
+        _text = wordRandom;
         string blank = "";
         int textLength = _text.Length;
         int index = 0;
@@ -23,30 +24,30 @@ public class Word()
             index += 1;
         }
         _text = blank + "_";
-        
     }
     
-    public void Show(int wordslength, int index) // Creates new string after randomly removed words have been replaced with underscores 
+    public void Show() // Creates new string after randomly removed words have been replaced with underscores 
     {
-    ;
+        
     }
-    public bool IsHidden(int number)
+    public bool IsHidden(string theWord)
     {
-        bool _isHidden;
-        if (number == 0)
+        bool result;
+        if (theWord[0] == '_')
         {
-            _isHidden = false;
+            result = false;
         }
         else
         {
-            _isHidden = true;
+            result = true;
         }
-        return _isHidden;
+        return result;
     }
     public string GetDisplayText(string text)
     {
+        _text = text;
         
-        
-        return "";
+        return _text;
     }
+    
 }
