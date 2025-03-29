@@ -24,9 +24,8 @@ public class Fraction()
     }
     public int GetNumerator();
     {
-        string numerator = Console.ReadLine();
-        int numeratorInt = int.Parse(numerator);
-        return numeratorInt;
+        int numerator = _top;
+        return numerator;
     }
     public int SetNumerator(int top)
     {
