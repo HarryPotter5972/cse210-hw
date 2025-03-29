@@ -1,16 +1,19 @@
 using System;
+using System.ComponentModel.Design;
 using System.Net;
 
 class Program
 {
     static void Main(string[] args)
     {
+        List<Video> videos = new List<Video>();
         Console.WriteLine("Welcome to YouTube!");
-        Console.WriteLine("1. Make a video");
+        Console.WriteLine("1. Make a video"); //Be sure to do this first before doing anything else!!!!!!!!
         Console.WriteLine("2. Load a video");
-        Console.WriteLine("3. Quit");
+        Console.WriteLine("3. Display video info");
+        Console.WriteLine("4. Quit");
         string response = Console.ReadLine();
-        if (response == "Quit" || response == "3")
+        if (response == "Quit" || response == "4")
         {
             Console.WriteLine("See you next time!");
         }
@@ -29,7 +32,9 @@ class Program
                     video._length = Console.ReadLine();
                     video._commentEntries = new List<Comment>();
                     video.SaveVideo(video._title, video._commentEntries);
-                    response = "quit";
+                    videos.Add(video);
+                    Console.Write("Want to do more? ");
+                    response = Console.ReadLine();
                 }
                 else if (response == "Load a video" || response == "2")
                 {
@@ -37,30 +42,58 @@ class Program
                     string videoToWatch = Console.ReadLine();
                     Video video = new Video();
                     video.LoadVideo(videoToWatch);
-                    Console.Write("Want to do more? ");
+                    Console.Write("Want to write a comment? ");
                     string answer = Console.ReadLine();
                     if (answer == "Yes")
                     {
-                        Console.Write("Want to write a comment? ");
+                        video.CreatComment(video._title, video._commentEntries);
+                        Console.Write("Want to do more? ");
                         response = Console.ReadLine();
                     }
-                    else
-                    {
-                        response = "Quit";
-                    }
                 }
-                else if (response == "Yes")
+                else if (response == "Display")
                 {
-                    Comment comment = new Comment();
-                    Console.Write("What is your username? ");
-                    comment._username = Console.ReadLine();
-                    Console.Write("Please type in your comment");
-                    comment._comment = Console.ReadLine();
-                    DateTime today = DateTime.Now;
-                    comment._dateOfCommentUpload = today.ToShortDateString();
+                    Console.Write("Select a number. ");
+                    string number = Console.ReadLine();
+                    int numInt = int.Parse(number);
+                    Video video = videos[numInt];
+                    video.Display(video._title, video._author, video._length, video._commentEntries);
+                    Console.Write("Want to do more? ");
+                    response = Console.ReadLine();
+                }
+                else if (response == "Watch a video")
+                {
+                    int number = 1;
+                    Console.WriteLine("What video do you want to watch?");
+                    foreach (Video video in videos)
+                    {
+                        Console.WriteLine($"{number}. {video._title}");
+                        number=+1;
+                    }
+                    string videoSelection = Console.ReadLine();
+                    foreach (Video video in videos)
+                    {
+                        if (videoSelection == video._title)
+                        {
+                            Console.WriteLine("Do you want to write a comment? ");
+                            string writeComment = Console.ReadLine();
+                            if (writeComment == "yes")
+                            {
+                                video.CreatComment(video._title, video._commentEntries);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Want to do more? ");
+                                response = Console.ReadLine();
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Wrong video");
+                        }
+                    }
                     
                 }
-                else
                 {
                     Console.WriteLine("Thank you for using YouTube!");
                     break;
