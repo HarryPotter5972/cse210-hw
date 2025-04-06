@@ -43,14 +43,14 @@ public class ReflectingActivity : Activity
         string question = _questions[index];
         return question;
     }
-    public void DisplayPrompt()
+    private void DisplayPrompt()
     {
         _prompts.Add("Think of a time when you did something really hard.");
         _prompts.Add("Think of a time where you were in the wilderness");
         string prompt = GetRandomPrompt();
         Console.WriteLine(prompt);
     }
-    public void DisplayQuestions()
+    private void DisplayQuestions()
     {
         Console.Clear();
         _questions.Add("How did you feel when it was done? ");

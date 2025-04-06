@@ -94,7 +94,7 @@ public class Activity
 
         }
     }
-    public void DisplayEndingMessage() //For showing End Message
+    private void DisplayEndingMessage() //For showing End Message
     {
         Console.WriteLine("Well Done!!!!!");
         Console.WriteLine($"You did another {_duration} seconds of {_name}");
@@ -102,7 +102,7 @@ public class Activity
         Console.Clear();
         Action();
     }
-    public void ShowSpinner(int seconds) //For showing spinner
+    protected void ShowSpinner(int seconds) //For showing spinner
     {
         List<string> spinner = new List<string>();
         spinner.Add("|");
@@ -126,7 +126,7 @@ public class Activity
         }
 
     }
-    public void ShowCountDown(int seconds)
+    protected void ShowCountDown(int seconds)
     {
         for (int second = seconds; second > 0; second--)
         {

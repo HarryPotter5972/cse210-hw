@@ -27,7 +27,7 @@ public class ListingActivity : Activity
             Console.WriteLine($"{entry}");
         }
     }
-    public void GetRandomPrompt()
+    private void GetRandomPrompt()
     {
         _prompts.Add("List your favorite Pokemon.");
         _prompts.Add("List your favorite Yu-gi-oh! cards.");
