@@ -1,7 +1,7 @@
 using System;
 using System.Security.Cryptography.X509Certificates;
 
-class Scripture()
+public class Scripture()
 {
     private List<string> _scriptures = new List<string>();
     

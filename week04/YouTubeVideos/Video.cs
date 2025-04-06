@@ -1,7 +1,7 @@
 using System;
 using System.Security.Cryptography.X509Certificates;
 
-class Video
+public class Video
 {
     public List<Comment> _commentEntries = new List<Comment>();
 
