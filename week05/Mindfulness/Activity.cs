@@ -9,7 +9,6 @@ public class Activity
     protected int _totalTimeSeconds = 0;
     private int _totalTImeMinutes = 0;
     private string _name;
-    private List<string> _descriptions = new List<string>();
     private string _description;
     protected int _duration;
     public DateTime startTime = DateTime.Now;
