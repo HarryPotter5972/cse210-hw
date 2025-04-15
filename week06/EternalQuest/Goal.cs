@@ -1,11 +1,11 @@
 using System;
 using System.ComponentModel;
 using System.Data;
-public class Goal
+public abstract class Goal
 {
-    private string _shortName;
-    private string _description;
-    private string _points;
+    protected string _shortName;
+    protected string _description;
+    protected string _points;
 
     protected Goal(string name, string description, int points)
     {
@@ -23,7 +23,7 @@ public class Goal
     }
     public virtual string GetDetailsString()
     {
-        return $"{_shortName},{_description}, {_points}";
+        return $"{_shortName};{_description};{_points}";
     }
     public virtual string GetStringRepresentaion()
     {

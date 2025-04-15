@@ -29,7 +29,7 @@ public class ChecklistGoal : Goal
     public override bool IsComplete()
     {
         bool complete;
-        if (_amountCompleted == _target)
+        if (_amountCompleted >= _target)
         {
             complete = true;
         }

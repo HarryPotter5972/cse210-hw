@@ -5,11 +5,11 @@ public class SimpleGoal : Goal
     protected bool _isComplete;
     public SimpleGoal(string name, string description, int points) : base (name, description, points)
     {
-
+        
     }
     public override void RecordEvent()
     {
-
+        
     }
     public override bool IsComplete(string input)
     {
@@ -26,7 +26,7 @@ public class SimpleGoal : Goal
     }
     public override string GetDetailsString()
     {
-        return $"{_}";
+        return $"{_shortName};{_description}; {_isComplete}";
     }
     public override string GetStringRepresentaion()
     {
