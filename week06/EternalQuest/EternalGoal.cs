@@ -4,7 +4,7 @@ public class EternalGoal : Goal
     private int _numberAchieved;
     public EternalGoal(string name, string goalType, string description, int points) : base (name, goalType, description, points)
     {
-
+        _numberAchieved = 0;
     }
     public override void RecordEvent()
     {
@@ -33,6 +33,14 @@ public class EternalGoal : Goal
             completionStatus = false;
         }
         return completionStatus;
+    }
+    public override string GetDetailsString()
+    {
+        return $"{_shortName};{_description};{_numberAchieved}";
+    }
+    public override string GetStringRepresentaion()
+    {
+        return $"{_shortName},{_goalType},{_description},{_points}, {_numberAchieved}";
     }
     public override void SetCompletion(string numCompleted)
     {

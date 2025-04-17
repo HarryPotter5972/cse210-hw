@@ -180,7 +180,6 @@ public class GoalManager
             if (lineList[1] == "Simple")
             {
                 SimpleGoal simpleGoal = new SimpleGoal(lineList[0], lineList[1], lineList[2], int.Parse(lineList[3]));
-                _score += int.Parse(lineList[3]);
                 if (lineList[4] == "Complete")
                 {
                     string fakeString = "";
@@ -191,10 +190,15 @@ public class GoalManager
             else if (lineList[1] == "Checklist")
             {
                 ChecklistGoal checklist = new ChecklistGoal(lineList[0], lineList[1], lineList[2], int.Parse(lineList[3]), int.Parse(lineList[5]), int.Parse(lineList[6]));
-                _score += int.Parse(lineList[3]);
                 checklist.SetCompletion(lineList[4]);
                 _goals.Add(checklist);
 
+            }
+            else
+            {
+                EternalGoal eternalGoal = new EternalGoal(lineList[0], lineList[1], lineList[2], int.Parse(lineList[3]));
+                eternalGoal.SetCompletion(lineList[4]);
+                _goals.Add(eternalGoal);
             }
         }
     }
