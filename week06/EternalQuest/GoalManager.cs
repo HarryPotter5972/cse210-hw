@@ -31,7 +31,8 @@ public class GoalManager
         }
         else if (selection == "4" || selection == "Load from file")
         {
-            
+            Console.Write("What is the name of the file you want to load? ");
+            string fileToLoad = Console.ReadLine();
         }
 
     }
@@ -113,7 +114,7 @@ public class GoalManager
             string name = Console.ReadLine();
             Console.Write("What is the description of the new goal? ");
             string description = Console.ReadLine();
-            int points = 50;
+            int points = 0;
             SimpleGoal simpleGoal = new SimpleGoal(name, answer, description, points);
             _goals.Add(simpleGoal);
         }
@@ -123,7 +124,7 @@ public class GoalManager
             string name = Console.ReadLine();
             Console.Write("What is the description of the goal? ");
             string description = Console.ReadLine();
-            int points = 10;
+            int points = 0;
             Console.Write("How many times do you aim to achieve the goal? ");
             string achieveNumber = Console.ReadLine();
             int target = int.Parse(achieveNumber);
@@ -137,7 +138,7 @@ public class GoalManager
             string name = Console.ReadLine();
             Console.Write("What is the description of the goal? ");
             string description = Console.ReadLine();
-            int points = 50;
+            int points = 0;
             EternalGoal eternalGoal = new EternalGoal(name, answer, description, points);
             _goals.Add(eternalGoal);
         }

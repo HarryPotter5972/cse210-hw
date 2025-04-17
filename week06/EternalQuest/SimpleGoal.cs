@@ -14,7 +14,7 @@ public class SimpleGoal : Goal
         bool completionStatus = IsComplete(reply);
         if (completionStatus == true)
         {
-            _points += 50;
+            _points = "50";
             _isComplete = true;
             Console.WriteLine($"Congrats on completing {_shortName}!");
         }

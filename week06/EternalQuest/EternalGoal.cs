@@ -14,6 +14,7 @@ public class EternalGoal : Goal
         if (doneAgain == true)
         {
             _numberAchieved =+ 1;
+            _points = "50";
         }
         else
         {

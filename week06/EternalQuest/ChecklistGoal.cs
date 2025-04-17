@@ -5,7 +5,7 @@ public class ChecklistGoal : Goal
     private int _amountCompleted;
     private int _target;
     private int _bonus;
-    
+    private int _pointsToAdd;
     public ChecklistGoal(string name, string goalType, string description, int points, int target, int bonus) : base(name, goalType, description, points)
     {
         _target = target;
@@ -20,11 +20,13 @@ public class ChecklistGoal : Goal
         {
             _amountCompleted += 1;
             bool completionStatus = IsComplete(reply);
-            _points += 10;
+            _pointsToAdd = int.Parse(_points) + 10;
+            _points = $"{_pointsToAdd}";
             if (completionStatus == true)
             {
                 Console.WriteLine("Congrats! you completed");
-                _points += _bonus;
+                _pointsToAdd = int.Parse(_points) + _bonus;
+                _points = $"{_pointsToAdd}";
                 _completionStatus= "Complete";
             }
         }
