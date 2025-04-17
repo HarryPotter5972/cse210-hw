@@ -6,7 +6,7 @@ public class ChecklistGoal : Goal
     private int _target;
     private int _bonus;
     
-    public ChecklistGoal(string name, string description, int points, int target, int bonus) : base(name, description, points)
+    public ChecklistGoal(string name, string goalType, string description, int points, int target, int bonus) : base(name, goalType, description, points)
     {
         _target = target;
         _bonus = bonus;
@@ -19,14 +19,17 @@ public class ChecklistGoal : Goal
         if (reply == "yes")
         {
             _amountCompleted += 1;
-            bool completionStatus = IsComplete();
+            bool completionStatus = IsComplete(reply);
+            _points += 10;
             if (completionStatus == true)
             {
                 Console.WriteLine("Congrats! you completed");
+                _points += _bonus;
+                _completionStatus= "Complete";
             }
         }
     }
-    public override bool IsComplete()
+    public override bool IsComplete(string input)
     {
         bool complete;
         if (_amountCompleted >= _target)
@@ -41,10 +44,18 @@ public class ChecklistGoal : Goal
     }
     public override string GetDetailsString()
     {
-        return "";
+        return $"{_shortName};{_description};{_amountCompleted}/{_target};{_completionStatus}";
     }
-    public override string GetStringRepresentation()
+    public override string GetStringRepresentaion()
     {
-        return "";
+        return $"{_shortName},{_goalType},{_description},{_points},{_amountCompleted},{_target}, {_bonus},{_completionStatus}";
+    }
+    public override void SetCompletion(string numCompleted)
+    {
+        _amountCompleted = int.Parse(numCompleted);
+        if (_amountCompleted == _target)
+        {
+            _completionStatus = "Complete";
+        }
     }
 }

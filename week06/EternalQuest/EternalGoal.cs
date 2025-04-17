@@ -2,7 +2,7 @@ using System;
 public class EternalGoal : Goal
 {
     private int _numberAchieved;
-    public EternalGoal(string name, string description, int points) : base (name, description, points)
+    public EternalGoal(string name, string goalType, string description, int points) : base (name, goalType, description, points)
     {
 
     }
@@ -17,7 +17,7 @@ public class EternalGoal : Goal
         }
         else
         {
-            
+            Console.WriteLine("Go do it then.");
         }
     }
     public override bool IsComplete(string reply)
@@ -32,5 +32,9 @@ public class EternalGoal : Goal
             completionStatus = false;
         }
         return completionStatus;
+    }
+    public override void SetCompletion(string numCompleted)
+    {
+        _numberAchieved = int.Parse(numCompleted);
     }
 }
